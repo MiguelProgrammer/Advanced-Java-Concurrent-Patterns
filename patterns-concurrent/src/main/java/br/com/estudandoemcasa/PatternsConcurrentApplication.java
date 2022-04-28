@@ -9,11 +9,10 @@ public class PatternsConcurrentApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PatternsConcurrentApplication.class, args);
 
-		Runnable task = () -> System.out.println("Hello world!");
-		Thread thread = new Thread(task);
-		
-		thread.start();
-		
+		Runnable task = () -> System.out.println("Olá, eu sou uma thread!" + Thread.currentThread().getName());
+		for (int i = 0; i < 10; i++) {
+			new Thread(task).start();
+		}
 	}
 
 }
